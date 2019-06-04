@@ -11,6 +11,15 @@ export default new Vuex.Store({
           username    : null,
           token       : null
         },
+        dog: {
+          uid         : null,
+          age: 0,
+          state: null,
+          healthy: null,
+          born: null,
+          cost: 0,
+          breed: null
+        },
         sessionExpired: false,
     },
     mutations: {
@@ -27,6 +36,10 @@ export default new Vuex.Store({
         [types.LOGOUT]: (state) => {
           localStorage.removeItem('user');
           state.user = null;
-        }
+        },
+        [types.DOG]: (state, dog) => {
+          localStorage.dog = JSON.stringify(dog);
+          state.dog = dog;
+        },
     }
 })

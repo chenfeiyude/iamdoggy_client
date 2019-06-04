@@ -1,6 +1,9 @@
 <template>
   <div class="response-error" v-if="response_errors.length">
-    <p class="alert alert-danger" v-for="(error, index) in uniqueErrors" :key="index" >{{ error }}</p>
+    <div class="alert alert-danger" v-for="(error, index) in uniqueErrors" :key="index">
+        <button type="button" aria-hidden="true" class="close">×</button>
+        <span><b> Error - </b> {{ error }}</span>
+    </div>
   </div>
 </template>
 

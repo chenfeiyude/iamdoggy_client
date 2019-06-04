@@ -5,12 +5,18 @@
       <div class="form-group" :class="{ 'control': true }">
           <label for="email">Your email address</label>
           <input v-model="user.username" v-validate="'required|email'" class="form-control" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="email" placeholder="Enter email">
-          <span v-show="errors.has('email')" class="help is-danger">{{ errors.first('email') }}</span>
+          <div class="alert alert-warning" v-show="errors.has('email')">
+            <button type="button" aria-hidden="true" class="close">×</button>
+            <span>{{ errors.first('email') }}</span>
+          </div>
       </div>
       <div class="form-group" :class="{ 'control': true }">
           <label for="password">Password</label>
           <input v-model="user.password" v-validate="'required|min:2'" class="form-control" :class="{'input': true, 'is-danger': errors.has('password') }" name="password" type="password" placeholder="Enter password">
-          <span v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</span>
+          <div class="alert alert-warning" v-show="errors.has('password')">
+            <button type="button" aria-hidden="true" class="close">×</button>
+            <span>{{ errors.first('password') }}</span>
+          </div>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Login</button>
