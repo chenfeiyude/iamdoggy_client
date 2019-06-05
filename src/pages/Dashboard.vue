@@ -39,6 +39,13 @@
           </div>
         </card>
       </div>
+      <div class="col-md-6 col-xl-3" >
+        <card class="card" title="Activities">
+          <div v-if="activity_log != ''">
+            <pre>{{ activity_log }}</pre>
+          </div>
+        </card>
+      </div>
     </div>
 
   </div>
@@ -47,6 +54,7 @@
 import { StatsCard, ChartCard } from "@/components/index";
 import Chartist from 'chartist';
 import events from '../js/events'
+import doggy from '../js/doggy'
 import * as types from '../js/types'
 import ResponseError from './Notifications/ResponseError'
 
@@ -58,19 +66,15 @@ export default {
   },
   data() {
     return {
-      statsCards: [
-        {
-          type: "warning",
-          icon: "ti-server",
-          title: "Capacity",
-          value: "105GB",
-          footerText: "Updated now",
-          footerIcon: "ti-reload"
-        }
-      ],
+      statsCards: [],
       dogs: [],
+      activity_log: '',
       response_errors:[]
     };
+  },
+  created(){
+      this.getDogs();
+      this.interval = setInterval(() => this.getActivityLog(), 10000);
   },
   methods: {
     getRandomDog() {
@@ -78,13 +82,46 @@ export default {
           if (result) {
              events.find_random_dog()
               .then(response => {
-                this.$store.commit(types.DOG, response.data);
+                this.getDogs();
               })
               .catch(error => {
                 this.response_errors = error;
               });
           }
       });
+    },
+    getDogs() {
+      this.statsCards = [];
+      doggy.get_dogs()
+            .then(response => {
+              this.dogs = response.data;
+              this.statsCards.push({ type: "warning",
+                          icon: "ti-server",
+                          title: "Dogs",
+                          value: this.dogs.length,
+                          footerText: "Updated now",
+                          footerIcon: "ti-reload"
+                        });
+              if(this.dogs.length > 0) {
+                this.$store.commit(types.DOG, this.dogs[0]);
+              } 
+            })
+            .catch(error => {
+              this.response_errors = error;
+            });
+    },
+    getActivityLog() {
+      if(this.$store.state.dog.id > 0) {
+          doggy.get_activity_log(this.$store.state.dog.id)
+            .then(response => {
+              this.activity_log = response.data.log;
+            })
+            .catch(error => {
+              this.response_errors = error;
+            });
+      }
+      
+
     }
   }
 };

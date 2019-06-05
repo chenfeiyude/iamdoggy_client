@@ -12,7 +12,8 @@ export default new Vuex.Store({
           token       : null
         },
         dog: {
-          uid         : null,
+          id: 0,
+          uid: null,
           age: 0,
           state: null,
           healthy: null,
