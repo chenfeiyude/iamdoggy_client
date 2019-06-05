@@ -112,7 +112,7 @@ export default {
     },
     getActivityLog() {
       if(this.$store.state.dog.id > 0) {
-          doggy.get_activity_log(this.$store.state.dog.id)
+          doggy.get_activity_log(this.$store.state.dog.id, 5)
             .then(response => {
               this.activity_log = response.data.log;
             })
