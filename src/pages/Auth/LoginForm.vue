@@ -3,27 +3,21 @@
     <response-error v-bind:response_errors="response_errors"></response-error>
     <form id="login_form" v-on:submit.prevent="doLogin">
       <div class="form-group" :class="{ 'control': true }">
-          <label for="email">Your email address</label>
-          <input v-model="user.username" v-validate="'required|email'" class="form-control" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="email" placeholder="Enter email">
+          <input v-model="user.username" v-validate="'required|email'" class="form-control fadeIn second" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="email" placeholder="Enter email">
           <div class="alert alert-warning" v-show="errors.has('email')">
-            <button type="button" aria-hidden="true" class="close">×</button>
+            <button type="button" aria-hidden="true" class="close"></button>
             <span>{{ errors.first('email') }}</span>
           </div>
       </div>
       <div class="form-group" :class="{ 'control': true }">
-          <label for="password">Password</label>
-          <input v-model="user.password" v-validate="'required|min:2'" class="form-control" :class="{'input': true, 'is-danger': errors.has('password') }" name="password" type="password" placeholder="Enter password">
+          <input v-model="user.password" v-validate="'required|min:2'" class="form-control fadeIn third" :class="{'input': true, 'is-danger': errors.has('password') }" name="password" type="password" placeholder="Enter password">
           <div class="alert alert-warning" v-show="errors.has('password')">
-            <button type="button" aria-hidden="true" class="close">×</button>
+            <button type="button" aria-hidden="true" class="close"></button>
             <span>{{ errors.first('password') }}</span>
           </div>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Login</button>
-      </div>
-      <div class="form-group">
-        <small id="emailHelp">New user? <router-link to="/register">Create an account</router-link>.</small>
-        <small id="emailHelp" class="form-text text-muted">Can't remember your password? <router-link to="/forgot_password">Reset your Password</router-link>.</small>
+        <input type="submit" class="btn btn-primary fadeIn fourth" value="Log In">
       </div>
     </form>
   </div>

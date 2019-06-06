@@ -1,29 +1,32 @@
 <template>
   <div class="wrapper">
-    <div class="main-panel">
-      <top-navbar></top-navbar>
+    <lobby-content @click.native="toggleSidebar">
 
-      <lobby-content @click.native="toggleSidebar">
+    </lobby-content>
 
-      </lobby-content>
-
-      <content-footer></content-footer>
-    </div>
+    <content-footer></content-footer>
   </div>
 </template>
 <style lang="scss">
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+}
+
 </style>
 <script>
-import TopNavbar from "./TopNavbar.vue";
 import ContentFooter from "./ContentFooter.vue";
 import LobbyContent from "./Content.vue";
-import MobileMenu from "./MobileMenu";
 export default {
   components: {
-    TopNavbar,
     ContentFooter,
-    LobbyContent,
-    MobileMenu
+    LobbyContent
   },
   methods: {
     toggleSidebar() {
