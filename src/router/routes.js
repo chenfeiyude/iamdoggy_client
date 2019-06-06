@@ -1,4 +1,6 @@
 import DashboardLayout from "@/layout/dashboard/DashboardLayout.vue";
+import LobbyLayout from "@/layout/lobby/LobbyLayout.vue"
+
 // GeneralViews
 import NotFound from "@/pages/NotFoundPage.vue";
 
@@ -11,17 +13,25 @@ import Typography from "@/pages/Typography.vue";
 import TableList from "@/pages/TableList.vue";
 import Login from "@/pages/Login.vue"
 
+
 const routes = [
   {
-    path: "/",
-    component: DashboardLayout,
-    redirect: "/dashboard",
+    path: "/auth",
+    component: LobbyLayout,
+    redirect: "/auth/login",
     children: [
       {
         path: "login",
         name: "login",
         component: Login
-      },
+      }
+    ]
+  },
+  {
+    path: "/",
+    component: DashboardLayout,
+    redirect: "/dashboard",
+    children: [
       {
         path: "dashboard",
         name: "dashboard",

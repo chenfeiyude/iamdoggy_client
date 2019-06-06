@@ -25,7 +25,7 @@ router.beforeEach((to, from, next) => {
         }
         else {
             next({
-                path: '/login',
+                path: '/auth/login',
                 query: {redirect: to.fullPath}
             })
         }
