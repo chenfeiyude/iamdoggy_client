@@ -10,28 +10,13 @@
         <sidebar-link to="/notifications" name="Notifications" icon="ti-bell"/>
       </template>
       <mobile-menu>
-        <li class="nav-item">
-          <a class="nav-link">
-            <i class="ti-panel"></i>
-            <p>Stats</p>
-          </a>
-        </li>
         <drop-down class="nav-item"
-                   title="5 Notifications"
-                   title-classes="nav-link"
-                   icon="ti-bell">
-          <a class="dropdown-item">Notification 1</a>
-          <a class="dropdown-item">Notification 2</a>
-          <a class="dropdown-item">Notification 3</a>
-          <a class="dropdown-item">Notification 4</a>
-          <a class="dropdown-item">Another notification</a>
+                     title="Hello"
+                     title-classes="nav-link"
+                     icon="ti-user">
+            <router-link :to="{path:'/settings'}" class="dropdown-item"><i class="ti-settings"></i> Settings</router-link>
+            <a href="#" v-on:click="logout" class="dropdown-item"><i class="ti-power-off"></i> Log out</a>
         </drop-down>
-        <li class="nav-item">
-          <a class="nav-link">
-            <i class="ti-settings"></i>
-            <p>Settings</p>
-          </a>
-        </li>
         <li class="divider"></li>
       </mobile-menu>
     </side-bar>
@@ -53,6 +38,8 @@ import TopNavbar from "./TopNavbar.vue";
 import ContentFooter from "./ContentFooter.vue";
 import DashboardContent from "./Content.vue";
 import MobileMenu from "./MobileMenu";
+import auth from "../../js/auth"
+import * as types from "../../js/types"
 export default {
   components: {
     TopNavbar,
@@ -65,6 +52,14 @@ export default {
       if (this.$sidebar.showSidebar) {
         this.$sidebar.displaySidebar(false);
       }
+    },
+    logout(){
+      auth.logout().then(response => {
+        this.$store.commit(types.LOGOUT);
+        this.$router.push({
+          path: '/auth/login'
+        });
+      });
     }
   }
 };

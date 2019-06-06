@@ -13,35 +13,20 @@
       </button>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="ti-panel"></i>
-              <p>Stats</p>
-            </a>
-          </li>
           <drop-down class="nav-item"
-                     title="5 Notifications"
+                     title="Hello"
                      title-classes="nav-link"
-                     icon="ti-bell">
-            <a class="dropdown-item" href="#">Notification 1</a>
-            <a class="dropdown-item" href="#">Notification 2</a>
-            <a class="dropdown-item" href="#">Notification 3</a>
-            <a class="dropdown-item" href="#">Notification 4</a>
-            <a class="dropdown-item" href="#">Another notification</a>
-          </drop-down>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="ti-settings"></i>
-              <p>
-                Settings
-              </p>
-            </a>
-          </li>
+                     icon="ti-user">
+            <router-link :to="{path:'/settings'}" class="dropdown-item"><i class="ti-settings"></i> Settings</router-link>
+            <a href="#" v-on:click="logout" class="dropdown-item"><i class="ti-power-off"></i> Log out</a>
+           </drop-down>
         </ul>
       </div>
     </div></nav>
 </template>
 <script>
+import auth from "../../js/auth"
+import * as types from "../../js/types"
 export default {
   computed: {
     routeName() {
@@ -51,8 +36,18 @@ export default {
   },
   data() {
     return {
-      activeNotifications: false
+      activeNotifications: false,
+      user: {
+          username: '',
+          firstName: '',
+          lastName: ''
+        }
     };
+  },
+  created(){
+      this.user.username = this.$store.state.user.username;
+      this.user.firstName = this.$store.state.user.firstName;
+      this.user.lastName = this.$store.state.user.lastName;
   },
   methods: {
     capitalizeFirstLetter(string) {
@@ -69,6 +64,14 @@ export default {
     },
     hideSidebar() {
       this.$sidebar.displaySidebar(false);
+    },
+    logout(){
+      auth.logout().then(response => {
+        this.$store.commit(types.LOGOUT);
+        this.$router.push({
+          path: '/auth/login'
+        });
+      });
     }
   }
 };

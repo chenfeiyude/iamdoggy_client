@@ -9,7 +9,9 @@ export default new Vuex.Store({
         user: {
           uid         : null,
           username    : null,
-          token       : null
+          token       : null,
+          firstname   : null,
+          lastname    : null
         },
         dog: {
           id: 0,
