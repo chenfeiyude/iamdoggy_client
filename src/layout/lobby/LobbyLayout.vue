@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper lobby-wrapper">
     <lobby-content @click.native="toggleSidebar">
 
     </lobby-content>
@@ -9,7 +9,7 @@
 </template>
 <style lang="scss">
 
-.wrapper {
+.lobby-wrapper {
   display: flex;
   align-items: center;
   flex-direction: column; 
