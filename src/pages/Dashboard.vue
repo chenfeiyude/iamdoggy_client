@@ -43,7 +43,7 @@
       <div class="col-md-6 col-xl-3" >
         <card class="card" title="Activities">
           <div v-if="activity_log != ''">
-            <pre>{{ activity_log }}</pre>
+            <textarea rows="5" class="form-control rounded-0" readonly>{{ activity_log }}</textarea>
           </div>
         </card>
       </div>
@@ -74,7 +74,7 @@ export default {
   },
   created(){
       this.getDogs();
-      this.interval = setInterval(() => this.getActivityLog(), 10000);
+      this.interval = setInterval(() => this.getActivityLog(), 1000);
   },
   methods: {
     getRandomDog() {
@@ -104,7 +104,7 @@ export default {
     },
     getActivityLog() {
       if(this.$store.state.dog.id > 0) {
-          doggy.get_activity_log(this.$store.state.dog.id, 5)
+          doggy.get_activity_log(this.$store.state.dog.id, 0)
             .then(response => {
               this.activity_log = response.data.log;
             })
