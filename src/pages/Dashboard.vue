@@ -4,41 +4,42 @@
     <response-error v-bind:response_errors="response_errors"></response-error>
     <!--Stats cards-->
     <div class="row">
-      <div class="col-md-6 col-xl-3" v-for="stats in statsCards" :key="stats.title">
+      <div class="col-md-6 col-xl-3">
         <stats-card>
-          <div class="icon-big text-center" :class="`icon-${stats.type}`" slot="header">
-            <i :class="stats.icon"></i>
+          <div class="icon-big text-center icon-warning" slot="header">
+            <i class="ti-server"></i>
           </div>
           <div class="numbers" slot="content">
-            <p>{{stats.title}}</p>
-            {{stats.value}}
+            <p>Dogs</p>
+            {{dogs.length}}
           </div>
           <div class="stats" slot="footer">
-            <i :class="stats.footerIcon"></i> {{stats.footerText}}
+            <i class="ti-reload"></i> Updated now
           </div>
         </stats-card>
       </div>
-      
-    </div>
-
-    <!--Dogs-->
-    <div class="row">
-      <div class="col-md-6 col-xl-3" >
-        <card class="card" title="Find Random Dog">
-          <div>
-            <form @submit.prevent>
-              <div class="text-center">
+      <div class="col-md-6 col-xl-3">
+        <stats-card>
+          <div class="icon-big text-center icon-warning" slot="header">
+            <i class="ti-search"></i>
+          </div>
+          <div class="numbers" slot="content">
+            <p>Need a dog?</p>
                 <p-button type="info"
                           round
                           @click.native.prevent="getRandomDog">
                   Rock!
                 </p-button>
-              </div>
-              <div class="clearfix"></div>
-            </form>
           </div>
-        </card>
+          <div class="stats" slot="footer">
+            <i class="ti-reload"></i> Updated now
+          </div>
+        </stats-card>
       </div>
+    </div>
+
+    <!--Dogs-->
+    <div class="row">
       <div class="col-md-6 col-xl-3" >
         <card class="card" title="Activities">
           <div v-if="activity_log != ''">
@@ -66,7 +67,6 @@ export default {
   },
   data() {
     return {
-      statsCards: [],
       dogs: [],
       activity_log: '',
       response_errors:[]
@@ -91,17 +91,9 @@ export default {
       });
     },
     getDogs() {
-      this.statsCards = [];
       doggy.get_dogs()
             .then(response => {
               this.dogs = response.data;
-              this.statsCards.push({ type: "warning",
-                          icon: "ti-server",
-                          title: "Dogs",
-                          value: this.dogs.length,
-                          footerText: "Updated now",
-                          footerIcon: "ti-reload"
-                        });
               if(this.dogs.length > 0) {
                 this.$store.commit(types.DOG, this.dogs[0]);
               } 
