@@ -2,17 +2,17 @@ import DashboardLayout from "@/layout/dashboard/DashboardLayout.vue";
 import LobbyLayout from "@/layout/lobby/LobbyLayout.vue"
 
 // GeneralViews
-import NotFound from "@/pages/NotFoundPage.vue";
+import NotFound from "@/pages/NotFoundPage";
 
 // Admin pages
-import Dashboard from "@/pages/Dashboard.vue";
-import UserProfile from "@/pages/UserProfile.vue";
-import Notifications from "@/pages/Notifications.vue";
-import Icons from "@/pages/Icons.vue";
-import Typography from "@/pages/Typography.vue";
-import TableList from "@/pages/TableList.vue";
-import Login from "@/pages/Login.vue"
-
+import Dashboard from "@/pages/Dashboard";
+import UserProfile from "@/pages/UserProfile";
+import Notifications from "@/pages/Notifications";
+import Icons from "@/pages/Icons";
+import Typography from "@/pages/Typography";
+import TableList from "@/pages/TableList";
+import Login from "@/pages/Login"
+import Registration from "@/pages/Registration"
 
 const routes = [
   {
@@ -24,6 +24,11 @@ const routes = [
         path: "login",
         name: "login",
         component: Login
+      },
+      {
+        path: "registration",
+        name: "registration",
+        component: Registration
       }
     ]
   },

@@ -74,7 +74,7 @@ export default {
   },
   created(){
       this.getDogs();
-      this.interval = setInterval(() => this.getActivityLog(), 1000);
+      this.interval = setInterval(() => this.getActivityLog(), 10000);
   },
   methods: {
     getRandomDog() {

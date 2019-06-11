@@ -19,4 +19,7 @@ export default {
       });
   },
 
+  check_email(username){
+      return axios.get('/api/auth/check_email?username='+username);
+  },
 }

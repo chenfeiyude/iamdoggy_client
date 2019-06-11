@@ -34,9 +34,9 @@
 <style lang="scss">
 </style>
 <script>
-import TopNavbar from "./TopNavbar.vue";
-import ContentFooter from "./ContentFooter.vue";
-import DashboardContent from "./Content.vue";
+import TopNavbar from "./TopNavbar";
+import ContentFooter from "./ContentFooter";
+import DashboardContent from "./Content";
 import MobileMenu from "./MobileMenu";
 import auth from "../../js/auth"
 import * as types from "../../js/types"

@@ -21,8 +21,8 @@
 
 </style>
 <script>
-import ContentFooter from "./ContentFooter.vue";
-import LobbyContent from "./Content.vue";
+import ContentFooter from "./ContentFooter";
+import LobbyContent from "./Content";
 export default {
   components: {
     ContentFooter,

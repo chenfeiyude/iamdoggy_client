@@ -3,11 +3,11 @@
     <response-error v-bind:response_errors="response_errors"></response-error>
     <form id="login_form" v-on:submit.prevent="doLogin">
       <div class="form-group" :class="{ 'control': true }">
-          <input v-model="user.username" v-validate="'required|email'" class="form-control fadeIn second" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="email" placeholder="Enter email">
-          <div class="alert alert-warning" v-show="errors.has('email')">
-            <button type="button" aria-hidden="true" class="close"></button>
-            <span>{{ errors.first('email') }}</span>
-          </div>
+        <input v-model="user.username" v-validate="'required|email'" class="form-control fadeIn second" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="email" placeholder="Enter email">
+        <div class="alert alert-warning" v-show="errors.has('email')">
+          <button type="button" aria-hidden="true" class="close"></button>
+          <span>{{ errors.first('email') }}</span>
+        </div>
       </div>
       <div class="form-group" :class="{ 'control': true }">
           <input v-model="user.password" v-validate="'required|min:2'" class="form-control fadeIn third" :class="{'input': true, 'is-danger': errors.has('password') }" name="password" type="password" placeholder="Enter password">
