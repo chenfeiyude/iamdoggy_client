@@ -1,8 +1,8 @@
-import DashboardLayout from "@/layout/dashboard/DashboardLayout.vue";
-import LobbyLayout from "@/layout/lobby/LobbyLayout.vue"
+import DashboardLayout from "@/layout/dashboard/DashboardLayout";
+import LobbyLayout from "@/layout/lobby/LobbyLayout";
 
 // GeneralViews
-import NotFound from "@/pages/NotFoundPage";
+import NotFound from "@/pages/Errors/404";
 
 // Admin pages
 import Dashboard from "@/pages/Dashboard";
@@ -11,8 +11,8 @@ import Notifications from "@/pages/Notifications";
 import Icons from "@/pages/Icons";
 import Typography from "@/pages/Typography";
 import TableList from "@/pages/TableList";
-import Login from "@/pages/Login"
-import Registration from "@/pages/Registration"
+import Login from "@/pages/Login";
+import Registration from "@/pages/Registration";
 
 const routes = [
   {
@@ -87,7 +87,22 @@ const routes = [
       }
     ]
   },
-  { path: "*", component: NotFound }
+  {
+    path: "/errors", 
+    component: LobbyLayout,
+    redirect: "/errors/404",
+    children: [
+      {
+        path: "404",
+        name: "404",
+        component: NotFound
+      }
+    ]
+  },
+  { 
+    path: "*",
+    redirect: "/errors/404"
+  }
 ];
 
 /**

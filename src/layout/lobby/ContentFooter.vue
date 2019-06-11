@@ -6,6 +6,9 @@
           <li>
             <router-link :to="{path:'/about'}">About</router-link>
           </li>
+          <li>
+            <router-link :to="{path:'/'}">Home</router-link>
+          </li>
         </ul>
       </nav>
       <div class="copyright d-flex flex-wrap">
