@@ -32,7 +32,7 @@
                 </p-button>
           </div>
           <div class="stats" slot="footer">
-            <i class="ti-reload"></i> Updated now
+            <i class="ti-face-smile"></i> Got {{dogs.length}} dogs
           </div>
         </stats-card>
       </div>
