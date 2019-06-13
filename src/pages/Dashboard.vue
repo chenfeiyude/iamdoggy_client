@@ -74,7 +74,7 @@ export default {
   },
   created(){
       this.getDogs();
-      this.interval = setInterval(() => this.getActivityLog(), 10000);
+      this.interval = setInterval(() => this.generateActivity(), 10000);
   },
   methods: {
     getRandomDog() {
@@ -102,9 +102,9 @@ export default {
               this.response_errors = error;
             });
     },
-    getActivityLog() {
+    generateActivity() {
       if(this.$store.state.dog.id > 0) {
-          doggy.get_activity_log(this.$store.state.dog.id, 0)
+          doggy.generate_activity(this.$store.state.dog.id)
             .then(response => {
               this.activity_log = response.data.log;
             })
