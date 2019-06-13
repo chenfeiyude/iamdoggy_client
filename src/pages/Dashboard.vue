@@ -10,8 +10,8 @@
             <i class="ti-server"></i>
           </div>
           <div class="numbers" slot="content">
-            <p>Dogs</p>
-            {{dogs.length}}
+            <p>Credit</p>
+            {{account.credit}}
           </div>
           <div class="stats" slot="footer">
             <i class="ti-reload"></i> Updated now
@@ -56,6 +56,7 @@ import { StatsCard, ChartCard } from "@/components/index";
 import Chartist from 'chartist';
 import events from '../js/events'
 import doggy from '../js/doggy'
+import management from '../js/management'
 import * as types from '../js/types'
 import ResponseError from './Notifications/ResponseError'
 
@@ -67,14 +68,16 @@ export default {
   },
   data() {
     return {
+      account: {credit: 0},
       dogs: [],
       activity_log: '',
       response_errors:[]
     };
   },
   created(){
-      this.getDogs();
-      this.interval = setInterval(() => this.generateActivity(), 10000);
+    this.getAccount();
+    this.getDogs();
+    this.interval = setInterval(() => this.generateActivity(), 10000);
   },
   methods: {
     getRandomDog() {
@@ -82,6 +85,7 @@ export default {
           if (result) {
              events.find_random_dog()
               .then(response => {
+                this.getAccount();
                 this.getDogs();
               })
               .catch(error => {
@@ -112,9 +116,16 @@ export default {
               this.response_errors = error;
             });
       }
-      
-
-    }
+    },
+    getAccount() {
+      management.get_account()
+            .then(response => {
+              this.account = response.data;
+            })
+            .catch(error => {
+              this.response_errors = error;
+            });
+    },
   }
 };
 </script>
