@@ -47,7 +47,7 @@
           </div>
           <div v-else>
             <div class="icon-big text-center icon-info">
-              <i class="ti-reload"></i> Loading log
+              <i class="ti-reload"></i> Loading
             </div>
           </div>
         </card>
