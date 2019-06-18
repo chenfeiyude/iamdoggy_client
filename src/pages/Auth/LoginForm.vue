@@ -50,6 +50,7 @@ export default{
       doLogin(){
         this.$validator.validateAll().then((result) => {
           if (result) {
+            console.info(this.user);
              auth.login(this.user.username, this.user.password)
               .then(response => {
                   this.$store.commit(types.LOGIN, response.data);
