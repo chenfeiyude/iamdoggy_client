@@ -40,10 +40,10 @@
 
     <!--Dogs-->
     <div class="row">
-      <div class="col-md-6 col-xl-3" >
+      <div class="col-md-12 col-xl-6" v-if="activity_log != ''">
         <card class="card" title="Activities">
-          <div v-if="activity_log != ''">
-            <textarea rows="5" class="form-control rounded-0" readonly>{{ activity_log }}</textarea>
+          <div>
+            <textarea rows="10" class="form-control rounded-0" readonly>{{ activity_log }}</textarea>
           </div>
         </card>
       </div>
