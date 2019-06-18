@@ -40,10 +40,15 @@
 
     <!--Dogs-->
     <div class="row">
-      <div class="col-md-12 col-xl-6" v-if="activity_log != ''">
+      <div class="col-md-12 col-xl-6" >
         <card class="card" title="Activities">
-          <div>
+          <div v-if="activity_log != ''">
             <textarea rows="10" class="form-control rounded-0" readonly>{{ activity_log }}</textarea>
+          </div>
+          <div v-else>
+            <div class="icon-big text-center icon-info">
+              <i class="ti-reload"></i> Loading log
+            </div>
           </div>
         </card>
       </div>
