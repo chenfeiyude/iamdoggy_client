@@ -79,6 +79,10 @@ export default {
     this.getDogs();
     this.interval = setInterval(() => this.generateActivity(), 10000);
   },
+  destroyed() {
+    // remove the interval when the user left this component
+    this.interval && window.clearInterval(this.interval);
+  },
   methods: {
     getRandomDog() {
       this.$validator.validateAll().then((result) => {
