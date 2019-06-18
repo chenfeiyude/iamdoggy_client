@@ -56,9 +56,10 @@ export default {
     logout(){
       auth.logout().then(response => {
         this.$store.commit(types.LOGOUT);
-        this.$router.push({
-          path: '/auth/login'
-        });
+        // this.$router.push({
+        //   path: '/auth/login'
+        // });
+        location.reload();
       });
     }
   }
