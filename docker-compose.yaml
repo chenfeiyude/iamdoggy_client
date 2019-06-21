@@ -1,0 +1,20 @@
+version: '3'
+services:
+  nginx:
+   container_name: iamdoggy_client_nginx
+   image: nginx:1.13
+   restart: always
+   ports:
+     - 80:80
+     - 443:443
+   volumes:
+     - ./nginx/conf.d:/etc/nginx/conf.d
+   depends_on:
+     - client
+   
+  client:
+    container_name: client
+    restart: always
+    build: .
+    expose:
+      - 8080

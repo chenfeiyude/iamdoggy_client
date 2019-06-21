@@ -1,4 +1,8 @@
 ## Build Setup
+```
+npm install && docker-compose build && docker-compose up
+```
+
 
 ### install dependencies
 ```
@@ -16,3 +20,4 @@ npm run build
 ```
 npm run lint
 ```
+
