@@ -76,11 +76,22 @@ export default {
       account: {credit: 0},
       dogs: [],
       activity_log: '',
+      primary_dog: {
+        id: 0,
+        uid: null,
+        age: 0,
+        state: null,
+        healthy: null,
+        born: null,
+        cost: 0,
+        breed: null
+      },
       response_errors:[]
     };
   },
   created(){
     this.getAccount();
+    this.getPrimaryDog();
     this.getDogs();
     this.interval = setInterval(() => this.generateActivity(), 10000);
   },
@@ -107,17 +118,24 @@ export default {
       doggy.get_dogs()
             .then(response => {
               this.dogs = response.data;
-              if(this.dogs.length > 0) {
-                this.$store.commit(types.DOG, this.dogs[0]);
-              } 
+            })
+            .catch(error => {
+              this.response_errors = error;
+            });
+    },
+    getPrimaryDog() {
+      doggy.get_primary_dog()
+            .then(response => {
+              this.primary_dog = response.data;
+              this.$store.commit(types.PRIMARY_DOG, this.primary_dog);
             })
             .catch(error => {
               this.response_errors = error;
             });
     },
     generateActivity() {
-      if(this.$store.state.dog.id > 0) {
-          doggy.generate_activity(this.$store.state.dog.id)
+      if(this.primary_dog.id > 0) {
+          doggy.generate_activity(this.primary_dog.id)
             .then(response => {
               this.activity_log = response.data.log;
             })

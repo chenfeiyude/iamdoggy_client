@@ -10,4 +10,7 @@ export default {
     generate_activity(pid) {
         return axios.get('/api/doggy/activity/generate?pid='+pid);
     },
+    get_primary_dog() {
+        return axios.get('/api/doggy/dogs/get/primary');
+    }
 }
