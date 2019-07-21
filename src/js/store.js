@@ -13,7 +13,7 @@ export default new Vuex.Store({
           firstname   : null,
           lastname    : null
         },
-        dog: {
+        primary_dog: {
           id: 0,
           uid: null,
           age: 0,
@@ -21,7 +21,11 @@ export default new Vuex.Store({
           healthy: null,
           born: null,
           cost: 0,
-          breed: null
+          breed: null,
+          level: 0,
+          speed: 0,
+          attack: 0,
+          defence: 0
         },
         sessionExpired: false,
     },
@@ -40,9 +44,9 @@ export default new Vuex.Store({
           localStorage.removeItem('user');
           state.user = null;
         },
-        [types.DOG]: (state, dog) => {
-          localStorage.dog = JSON.stringify(dog);
-          state.dog = dog;
+        [types.PRIMARY_DOG]: (state, primary_dog) => {
+          localStorage.primary_dog = JSON.stringify(primary_dog);
+          state.primary_dog = primary_dog;
         },
     }
 })

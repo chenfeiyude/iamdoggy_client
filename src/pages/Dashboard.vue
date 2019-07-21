@@ -40,6 +40,19 @@
 
     <!--Dogs-->
     <div class="row">
+      <div class="col-md-12 col-xl-6">
+        <card title="Primary Dog" subTitle="All activities are related to this dog">
+          <div slot="raw-content" class="table-responsive">
+            <table class="table table-striped">
+              <tr><th>Breed</th><td>{{primary_dog.breed}}</td></tr>
+              <tr><th>Level</th><td>{{primary_dog.level}}</td></tr>
+              <tr><th>Speed</th><td>{{primary_dog.speed}}</td></tr>
+              <tr><th>Attack</th><td>{{primary_dog.attack}}</td></tr>
+              <tr><th>Defence</th><td>{{primary_dog.defence}}</td></tr>
+            </table>
+          </div>
+        </card>
+      </div>
       <div class="col-md-12 col-xl-6" >
         <card class="card" title="Activities">
           <div v-if="activity_log != ''">
@@ -84,7 +97,11 @@ export default {
         healthy: null,
         born: null,
         cost: 0,
-        breed: null
+        breed: null,
+        level: 0,
+        speed: 0,
+        attack: 0,
+        defence: 0
       },
       response_errors:[]
     };
@@ -93,7 +110,7 @@ export default {
     this.getAccount();
     this.getPrimaryDog();
     this.getDogs();
-    this.interval = setInterval(() => this.generateActivity(), 10000);
+    this.interval = setInterval(() => this.generateActivity(), 1000);
   },
   destroyed() {
     // remove the interval when the user left this component
