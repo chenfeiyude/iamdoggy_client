@@ -15,6 +15,7 @@
         &copy; Coded with
         <i class="fa fa-heart heart"></i> by
         <a href="https://github.com/chenfeiyude/iamdoggy_client" target="_blank"> &nbsp; Feiyu Chen.</a>&nbsp;
+        BETA
       </div>
     </div>
   </footer>

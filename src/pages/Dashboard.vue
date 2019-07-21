@@ -123,6 +123,7 @@ export default {
              events.find_random_dog()
               .then(response => {
                 this.getAccount();
+                this.getPrimaryDog();
                 this.getDogs();
               })
               .catch(error => {

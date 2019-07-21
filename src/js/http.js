@@ -4,8 +4,8 @@ import * as types from './types'
 import router from '../router/index'
 
 axios.defaults.timeout = 60000;
-// axios.defaults.baseURL = 'http://localhost:8080/app';
-axios.defaults.baseURL = 'http://iamdoggy.com/app';
+axios.defaults.baseURL = 'http://localhost:8080/app';
+// axios.defaults.baseURL = 'http://iamdoggy.com/app';
 
 axios.interceptors.request.use(
     config => {
