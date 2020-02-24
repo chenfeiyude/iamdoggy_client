@@ -110,7 +110,7 @@ export default {
     this.getAccount();
     this.getPrimaryDog();
     this.getDogs();
-    this.interval = setInterval(() => this.generateActivity(), 1000);
+    this.interval = setInterval(() => this.generateActivity(), 10000);
   },
   destroyed() {
     // remove the interval when the user left this component
