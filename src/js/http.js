@@ -6,6 +6,8 @@ import router from '../router/index'
 axios.defaults.timeout = 60000;
 // axios.defaults.baseURL = 'http://localhost:8080/iamdoggy';
 axios.defaults.baseURL = 'http://feiyu4fun.com/iamdoggy/main';
+axios.defaults.withCredentials = true;
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 axios.interceptors.request.use(
     config => {
