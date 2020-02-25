@@ -6,11 +6,7 @@ import NotFound from "@/pages/Errors/404";
 
 // Admin pages
 import Dashboard from "@/pages/Dashboard";
-import UserProfile from "@/pages/UserProfile";
-import Notifications from "@/pages/Notifications";
-import Icons from "@/pages/Icons";
-import Typography from "@/pages/Typography";
-import TableList from "@/pages/TableList";
+import MyDogs from "@/pages/MyDogs";
 import Login from "@/pages/Login";
 import Registration from "@/pages/Registration";
 
@@ -46,44 +42,12 @@ const routes = [
         component: Dashboard
       },
       {
-        path: "stats",
-        name: "stats",
+        path: "my_dogs",
+        name: "my_dogs",
         meta: {
           requireAuth: true,
         },
-        component: UserProfile
-      },
-      {
-        path: "notifications",
-        name: "notifications",
-        meta: {
-          requireAuth: true,
-        },
-        component: Notifications
-      },
-      {
-        path: "icons",
-        name: "icons",
-        meta: {
-          requireAuth: true,
-        },
-        component: Icons
-      },
-      {
-        path: "typography",
-        name: "typography",
-        meta: {
-          requireAuth: true,
-        },
-        component: Typography
-      },
-      {
-        path: "table-list",
-        name: "table-list",
-        meta: {
-          requireAuth: true,
-        },
-        component: TableList
+        component: MyDogs
       }
     ]
   },
