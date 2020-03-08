@@ -12,5 +12,8 @@ export default {
     },
     get_primary_dog() {
         return axios.get('/api/doggy/dogs/get/primary');
+    },
+    set_primary_dog(pid) {
+        return axios.post('/api/doggy/dogs/set/primary?pid='+pid);
     }
 }

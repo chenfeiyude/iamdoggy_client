@@ -1,3 +1,8 @@
+## Template
+This GUI is built based on the template called vue-paper-dashboard:  
+
+https://demos.creative-tim.com/vue-paper-dashboard
+
 ## Build Setup
 ```
 npm install && docker-compose build && docker-compose up

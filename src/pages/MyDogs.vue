@@ -19,6 +19,13 @@
               <tr><th>Defence</th><td>{{dog.defence}}</td></tr>
             </table>
           </div>
+          <div slot="footer" v-show="dog.primary == false" class="text-center">
+            <p-button type="info"
+                        round
+                        @click.native.prevent="setPrimaryDog(dog.id)">
+                Set Primary
+            </p-button>
+           </div>
         </card>
       </div>
     </div>
@@ -53,6 +60,15 @@ export default {
       doggy.get_dogs()
         .then(response => {
             this.dogs = response.data;
+        })
+        .catch(error => {
+            this.response_errors = error;
+        });
+    },
+    setPrimaryDog(pid) {
+        doggy.set_primary_dog(pid)
+        .then(response => {
+            this.getDogs();
         })
         .catch(error => {
             this.response_errors = error;
