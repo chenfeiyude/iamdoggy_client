@@ -43,7 +43,7 @@ const routes = [
       },
       {
         path: "my_dogs",
-        name: "my_dogs",
+        name: "my dogs",
         meta: {
           requireAuth: true,
         },

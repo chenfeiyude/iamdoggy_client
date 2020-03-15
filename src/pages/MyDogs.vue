@@ -6,7 +6,7 @@
     <!--Dogs-->
     <div class="row">
       <div v-for="dog in dogs" v-bind:key="dog" class="col-md-12 col-xl-6">
-        <card :title="dog.breed" subTitle="All activities are related to this dog">
+        <card :title="dog.breed">
           <div slot="raw-content" class="table-responsive">
             <table class="table table-striped">
               <tr><th>Healthy</th><td>{{dog.healthy}}</td></tr>
