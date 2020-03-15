@@ -19,8 +19,11 @@
               <tr><th>Defence</th><td>{{dog.defence}}</td></tr>
             </table>
           </div>
-          <div slot="footer" v-show="dog.primary == false" class="text-center">
-            <p-button type="info"
+          <div slot="footer" class="text-center">
+            <p-button v-if="dog.primary" type="info" round disabled>
+                Primary
+            </p-button>
+            <p-button v-else type="info"
                         round
                         @click.native.prevent="setPrimaryDog(dog.id)">
                 Set Primary
